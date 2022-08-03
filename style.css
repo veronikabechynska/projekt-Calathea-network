@@ -1,5 +1,5 @@
 .menu {
-    border-top: 2px solid #9c8175;
+    border-top: 2px solid #034001;
     position: sticky;
     top: 0;
 }
@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #282425;
+    background-color: #034001;
 }
 
 .menu li {
@@ -24,4 +24,15 @@
 
 .menu a:hover, .menu a:focus, .menu a:active {
     background-color: #756158;
+}
+
+h1 {
+    text-align: center;
+}
+h2{
+
+}
+body{
+    background-color: whitesmoke;
+    color:black ;
 }
