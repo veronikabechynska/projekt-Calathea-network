@@ -68,6 +68,12 @@ client = new Paho.MQTT.Client(
             console.log("onMessageArrived:" + message.destinationName);  
             console.log("onMessageArrived:" + message.payloadString); 
         }
+
+        function pocitejVlhkost() {
+            if(message.payloadString>=675)
+            ahoj
+
+        }
         
    
     
