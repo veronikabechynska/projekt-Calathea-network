@@ -26,7 +26,8 @@ client = new Paho.MQTT.Client(
         //zapnoutRele();
         vypnoutRele();
         vypnoutSvetla();
-        ukazatUrovenVlhkosti();
+        
+        
         }
         
         //function zapnoutSvetla() {
@@ -44,12 +45,12 @@ client = new Paho.MQTT.Client(
             } 
         
 
-        //function zapnoutRele() {
-            //message = new Paho.MQTT.Message("on");     
-            //message.destinationName = "/in/plant/relay";       
-            //client.send(message);  
+        function zapnoutRele() {
+            message = new Paho.MQTT.Message("on");     
+            message.destinationName = "/in/plant/relay";       
+            client.send(message);  
             
-            //} 
+            } 
 
         function vypnoutRele() {
             message = new Paho.MQTT.Message("off");     
@@ -57,24 +58,65 @@ client = new Paho.MQTT.Client(
             client.send(message); 
             }
 
-        function ukazatUrovenVlhkosti() {
-            message = new Paho.MQTT.Message("9");     
-            message.destinationName = "/in/plant/humidity/level";       
-            client.send(message); 
-            }
+
+
 
         function onMessageArrived(message) {  
 
             console.log("onMessageArrived:" + message.destinationName);  
             console.log("onMessageArrived:" + message.payloadString); 
+            if (message.destinationName === "/out/plant/humidity") {
+              
+                pocitejVlhkost(message.payloadString);
+
+            }
         }
 
-        function pocitejVlhkost() {
-            if(message.payloadString>=675)
-            ahoj
+        function pocitejVlhkost(payloadString) {
+            let payload = Number(payloadString);
+            let vlhkost = 9;
 
+            if(payload>=675)
+            { vlhkost = 0}
+            else if(payload>=650)
+            { vlhkost = 1}
+            else if(payload>=625)
+            { vlhkost = 2}
+            else if(payload>=600)
+            { vlhkost = 3}
+            else if(payload>=575)
+            { vlhkost = 4}
+            else if(payload>=550)
+            { vlhkost = 5}
+            else if(payload>=525)
+            { vlhkost = 6}
+            else if(payload>=500)
+            { vlhkost = 7}
+            else if(payload>=475)
+            { vlhkost = 8}
+        
+            ukazatUrovenVlhkosti(vlhkost)
+            automatickeZavlazovani(vlhkost)
+
+        }
+        function ukazatUrovenVlhkosti(vlhkost) {
+            message = new Paho.MQTT.Message(String(vlhkost));     
+            message.destinationName = "/in/plant/humidity/level";       
+            client.send(message); 
+            }
+
+        function automatickeZavlazovani(vlhkost) {
+            if (vlhkost<=3) {
+                zapnoutRele();
+                setTimeout(vypnoutRele(),10000)
+            }
         }
         
+        
+      
+            
+
+            
    
     
    
