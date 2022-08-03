@@ -30,9 +30,30 @@ h1 {
     text-align: center;
 }
 h2{
-
+    text-align: center;
 }
 body{
     background-color: whitesmoke;
     color:black ;
 }
+
+.kontejner{display: grid;
+    grid-template-columns: repeat(3, 1fr );
+    grid-auto-rows:300px;
+    gap: 1px}
+    
+    .foto:nth-child(5n) {
+    grid-column: span 2 ;
+    grid-row: span 2;}
+    
+    
+    img{font-display:block ;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    
+    }
+        @media (min-width:800px) {
+        .kontejner{
+            grid-template-columns: repeat(3, 1fr);}
+              }
