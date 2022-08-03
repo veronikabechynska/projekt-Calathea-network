@@ -25,20 +25,42 @@
 .menu a:hover,
 .menu a:focus,
 .menu a:active {
-    background-color: #756158;
+    background-color: #B3D8AA;
 }
 
 h1 {
     text-align: center;
+    color: black;
 }
 
 h2 {
     text-align: center;
+    color:#034001;
+    font-style: italic;
 }
+h3{
+    color:#034001
+}
+
 
 body {
     background-color: whitesmoke;
     color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+p{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    font-size: large;
+}
+
+ul{
+    font-size: larger;
+}
+.kytka2 , .kytka4{
+    background-color: #B3D8AA;
 }
 
 .kontejnerM {
