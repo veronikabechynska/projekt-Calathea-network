@@ -19,7 +19,8 @@ client = new Paho.MQTT.Client(
             
         client.onMessageArrived = onMessageArrived; 
         client.subscribe("/out/plant/humidity"); 
-
+        client.subscribe("/out/plant/error"); 
+        client.subscribe("/out/plant/watertank/level"); 
         
         
         //zapnoutSvetla();
@@ -30,12 +31,12 @@ client = new Paho.MQTT.Client(
         
         }
         
-        //function zapnoutSvetla() {
-            //message = new Paho.MQTT.Message("on");     
-            //message.destinationName = "/in/plant/light";       
-            //client.send(message);  
+        function zapnoutSvetla() {
+            message = new Paho.MQTT.Message("on");     
+            message.destinationName = "/in/plant/light";       
+            client.send(message);  
         
-            //} 
+            } 
 
         function vypnoutSvetla() {
             message = new Paho.MQTT.Message("off");     
@@ -72,18 +73,28 @@ client = new Paho.MQTT.Client(
             }
         }
 
+        let pocetZavlazovani = 0
+        
         function pocitejVlhkost(payloadString) {
             let payload = Number(payloadString);
             let vlhkost = 9;
 
             if(payload>=675)
-            { vlhkost = 0}
+            { vlhkost = 0
+            pocetZavlazovani+=1;
+            }
             else if(payload>=650)
-            { vlhkost = 1}
+            { vlhkost = 1
+            pocetZavlazovani+=1;
+            }
             else if(payload>=625)
-            { vlhkost = 2}
+            { vlhkost = 2
+            pocetZavlazovani+=1;
+            }
             else if(payload>=600)
-            { vlhkost = 3}
+            { vlhkost = 3
+            pocetZavlazovani+=1;
+            }
             else if(payload>=575)
             { vlhkost = 4}
             else if(payload>=550)
@@ -98,6 +109,13 @@ client = new Paho.MQTT.Client(
             ukazatUrovenVlhkosti(vlhkost)
             automatickeZavlazovani(vlhkost)
 
+            console.log(vlhkost)
+            console.log(pocetZavlazovani)
+            
+            if (vlhkost<=3 && pocetZavlazovani < 5) {
+                automatickeZavlazovani();
+            }
+
         }
         function ukazatUrovenVlhkosti(vlhkost) {
             message = new Paho.MQTT.Message(String(vlhkost));     
@@ -106,10 +124,10 @@ client = new Paho.MQTT.Client(
             }
 
         function automatickeZavlazovani(vlhkost) {
-            if (vlhkost<=3) {
+            
                 zapnoutRele();
                 setTimeout(vypnoutRele(),10000)
-            }
+            
         }
         
         
