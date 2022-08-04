@@ -30,7 +30,7 @@
 
 h1 {
     text-align: center;
-    color-image: linear-gradient(#0D6AB7, #DA3F94);
+
     font-size: 80px;
    
 }
@@ -60,6 +60,7 @@ p {
     padding-right: 40px;
     padding-bottom: 10px;
     font-size: large;
+    text-align: justify;
 }
 
 
@@ -194,6 +195,8 @@ td {
     text-align: left;
     border-bottom: 1px solid black;
     padding: 10px 0;
+    font-style: 'Times New Roman';
+    text-align: justify;
 }
 
 table {
