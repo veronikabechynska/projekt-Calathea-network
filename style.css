@@ -30,17 +30,20 @@
 
 h1 {
     text-align: center;
-
+    color:  #034001;
     font-size: 80px;
-   
+     font-style: italic;
+
+
+
 }
 
 h2 {
     text-align: center;
     color: #034001;
     font-style: italic;
-    font-size: 30px;
-    ;
+    font-size: 35px;
+
 }
 
 h3 {
@@ -192,11 +195,12 @@ img {
 
 th,
 td {
-    text-align: left;
+
     border-bottom: 1px solid black;
-    padding: 10px 0;
+    padding: 13px 0;
     font-style: 'Times New Roman';
     text-align: justify;
+    float: initial;
 }
 
 table {
@@ -210,26 +214,42 @@ section {
 }
 
 
-.zapati {
-    background-color:  #034001;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
 
 
 header {
-    background-image: url(fotky/calathea5.jpg);
+    background-image: url(fotky/IMG-0399.jpg);
     background-repeat: space;
-    background-size:cover;
-    background-position:center;
+    background-size: cover;
+    background-position: center;
     padding: 60px 10px;
 }
 
 
-.monsteraobr{
-    width: 5s00px;
-    height: 400px;
+.monsteraobr {
+    width: 398px;
     float: right;
+    margin-left: 20px;
+
 }
+
+
+
+
+
+
+
+
+.logo1 {
+    width: 140px;
+    height: 140px;
+}
+
+.zapati {
+    background-color: #034001;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+
