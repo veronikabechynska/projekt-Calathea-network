@@ -88,6 +88,10 @@ client = new Paho.MQTT.Client(
                 pocitejVlhkost(message.payloadString);
 
             }
+            if (message.destinationName === "/out/plant/watertank/level")
+            {
+                zapnoutSvetla
+            }
         }
 
         
