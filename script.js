@@ -1,3 +1,6 @@
+let probihaZalevani = false;
+let cerstveZalito = false;
+
 client = new Paho.MQTT.Client(
     "d57a0d1c39d54550b147b58411d86743.s2.eu.hivemq.cloud", 
     8884, 
@@ -21,6 +24,7 @@ client = new Paho.MQTT.Client(
         client.subscribe("/out/plant/humidity"); 
         client.subscribe("/out/plant/error"); 
         client.subscribe("/out/plant/watertank/level"); 
+    
         
         
         //zapnoutSvetla();
@@ -50,13 +54,22 @@ client = new Paho.MQTT.Client(
         zalivej.addEventListener("click", zapnoutRele);
 
         function zapnoutRele() {
+            probihaZalevani = true;
+            cerstveZalito = true;
+            setTimeout(vypnoutCerstveZalito, 60000);
             message = new Paho.MQTT.Message("on");     
             message.destinationName = "/in/plant/relay";       
-            client.send(message);  
+            client.send(message); 
+            setTimeout(vypnoutRele, 15000); 
             
             } 
-
+        
+        function vypnoutCerstveZalito() {
+            cerstveZalito = false;
+        }
+        
         function vypnoutRele() {
+            probihaZalevani = false;
             message = new Paho.MQTT.Message("off");     
             message.destinationName = "/in/plant/relay";       
             client.send(message); 
@@ -76,28 +89,20 @@ client = new Paho.MQTT.Client(
             }
         }
 
-        let pocetZavlazovani = 0
+        
         
         function pocitejVlhkost(payloadString) {
             let payload = Number(payloadString);
             let vlhkost = 9;
 
             if(payload>=675)
-            { vlhkost = 0
-            pocetZavlazovani+=1;
-            }
+            { vlhkost = 0}
             else if(payload>=650)
-            { vlhkost = 1
-            pocetZavlazovani+=1;
-            }
+            { vlhkost = 1}
             else if(payload>=625)
-            { vlhkost = 2
-            pocetZavlazovani+=1;
-            }
+            { vlhkost = 2}
             else if(payload>=600)
-            { vlhkost = 3
-            pocetZavlazovani+=1;
-            }
+            { vlhkost = 3}
             else if(payload>=575)
             { vlhkost = 4}
             else if(payload>=550)
@@ -110,13 +115,13 @@ client = new Paho.MQTT.Client(
             { vlhkost = 8}
         
             ukazatUrovenVlhkosti(vlhkost)
-            automatickeZavlazovani(vlhkost)
+            
 
             console.log(vlhkost)
-            console.log(pocetZavlazovani)
             
-            if (vlhkost<=3 && pocetZavlazovani < 5) {
-                automatickeZavlazovani();
+            
+            if (vlhkost<=2) {
+                automatickeZavlazovani(vlhkost);
             }
 
         }
@@ -127,9 +132,12 @@ client = new Paho.MQTT.Client(
             }
 
         function automatickeZavlazovani(vlhkost) {
-            
+            if (probihaZalevani == false && cerstveZalito == false) {
                 zapnoutRele();
-                setTimeout(vypnoutRele(),10000)
+                setTimeout(vypnoutRele,5000);
+            }
+                
+                
             
         }
         
