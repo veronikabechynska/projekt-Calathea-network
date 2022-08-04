@@ -133,7 +133,7 @@ client = new Paho.MQTT.Client(
             }
 
         function automatickeZavlazovani(vlhkost) {
-            if (probihaZalevani == false && cerstveZalito == false) {
+            if (probihaZalevani == false && cerstveZalito == false && zapnoutAutomatickeZavlazovani == true) {
                 zapnoutRele();
                 setTimeout(vypnoutRele,5000);
             }
@@ -142,10 +142,12 @@ client = new Paho.MQTT.Client(
             
         }
 
-        let tlacitko2 = document.querySelector();
-        tlacitko2.addEventListener("click")
+        let tlacitko2 = document.querySelector(".button2");
+        tlacitko2.addEventListener("click",zmenaHodnotyZalvlazovani)
 
-        function
+        function zmenaHodnotyZalvlazovani(){
+            zapnoutAutomatickeZavlazovani=true
+        }
         
         
       
