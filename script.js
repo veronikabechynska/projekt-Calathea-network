@@ -25,8 +25,8 @@ client = new Paho.MQTT.Client(
         
         //zapnoutSvetla();
         //zapnoutRele();
-        vypnoutRele();
-        vypnoutSvetla();
+        //vypnoutRele();
+        //vypnoutSvetla();
         
         
         }
@@ -45,6 +45,9 @@ client = new Paho.MQTT.Client(
             
             } 
         
+
+        let zalivej = document.querySelector(".button");
+        zalivej.addEventListener("click", zapnoutRele);
 
         function zapnoutRele() {
             message = new Paho.MQTT.Message("on");     
