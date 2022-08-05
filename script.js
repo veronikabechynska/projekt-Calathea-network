@@ -39,7 +39,7 @@ function onConnect() {
 }
 
 function zalivej() {
-    zapnoutRele(15000)
+    zapnoutRele(15000, 15000)
     console.log("zalivej")
 }
 
@@ -86,22 +86,22 @@ function vypnoutSvetla() {
 
 //console.log(casovyUdaj)
 
-//let formular = document.querySelector(".formular");
-//formular.addEventListener("submit", zpracujFormular)
+let formular = document.querySelector(".formular");
+formular.addEventListener("submit", zpracujFormular)
 
 function zpracujFormular (event) {
     event.preventDefault();
 }
 
-function zapnoutRele(casVypnuti) {
+function zapnoutRele(dobaZalevani, intervalMeziZalevanim) {
     console.log("zapnoutRele");
     probihaZalevani = true;
     cerstveZalito = true;
-    setTimeout(vypnoutCerstveZalito, 6000); //tohle chcem aby si uzivatel nastavil sam 
+    setTimeout(vypnoutCerstveZalito, intervalMeziZalevanim); //tohle je interval mezi jednotlivyma zalevanim
     message = new Paho.MQTT.Message("on");     
     message.destinationName = "/in/plant/relay";       
     client.send(message); 
-    setTimeout(vypnoutRele, casVypnuti); 
+    setTimeout(vypnoutRele, dobaZalevani); //tohle je doba samotnýho zalevani
     
 } 
 
@@ -178,11 +178,12 @@ function ukazatUrovenVlhkosti(vlhkost) {
 }
 
 function automatickeZavlazovani(vlhkost) {
-    //let casovyUdaj = document.querySelector("#hodiny").value;
-    //console.log(casovyUdaj)
+    let intervalOdUzivatele = document.querySelector("#hodiny").value;
+    console.log("intervalOdUzivatele:")
+    console.log(intervalOdUzivatele)
     console.log("automatickeZavlazovani")
     if (probihaZalevani == false && cerstveZalito == false && zapnoutAutomatickeZavlazovani == true) {
-        zapnoutRele(5000);
+        zapnoutRele(5000, intervalOdUzivatele);
     }
         
 }
