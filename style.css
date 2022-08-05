@@ -2,6 +2,7 @@
     border-top: 2px solid #034001;
     position: sticky;
     top: 0;
+    
 }
 
 .menu ul {
@@ -13,6 +14,11 @@
 
 .menu li {
     display: inline-block;
+    width: 20%;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .menu a {
@@ -256,6 +262,73 @@ header {
     color: #B3D8AA;
 }
 
+
+.zapniAutoZalevani{
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #B3D8AA;
+    font-size: 17px;
+    width: 20%;
+    margin-left: 4%;
+    
+    
+    
+    
+    
+}
+.vypniAutoZalevani{
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #B3D8AA;
+    font-size: 17px;
+    width: 20%;
+    margin-left: 4%;
+    
+}
+.zalevej{
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #B3D8AA;
+    font-size: 17px;
+    width: 20%;
+    margin-left: 4%;
+    
+}
+#dolita-voda {
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #B3D8AA;
+    font-size: 17px;
+    width: 20%;
+    margin-left: 4%;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    
+}
+
+#odeslat {
+    background-color: #B3D8AA;
+    border-radius: 5px;
+    margin-left: 61%;
+}
+
+label {
+    font-size: 17px;
+    display: block;
+    margin-bottom: 1%;
+    margin-left: 46%;
+}
+
+#hodiny {
+    display: block;
+    margin-bottom: 1%;
+    margin-left: 39%;
+    border-radius: 10px;
+}
 
 
 

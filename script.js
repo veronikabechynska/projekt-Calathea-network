@@ -96,8 +96,11 @@ function vypnoutSvetla() {
 let formular = document.querySelector(".formular");
 formular.addEventListener("submit", zpracujFormular)
 
+let hodinyDriveZadany = ""
 function zpracujFormular (event) {
     event.preventDefault();
+    hodinyDriveZadany = document.querySelector("#hodiny").value
+    formular.reset()
 }
 
 function zapnoutRele(dobaZalevani, intervalMeziZalevanim) {
@@ -185,7 +188,7 @@ function ukazatUrovenVlhkosti(vlhkost) {
 }
 
 function automatickeZavlazovani(vlhkost) {
-    let intervalOdUzivatele = document.querySelector("#hodiny").value;
+    let intervalOdUzivatele = hodinyDriveZadany;
     console.log("intervalOdUzivatele:")
     console.log(intervalOdUzivatele)
     console.log("automatickeZavlazovani")

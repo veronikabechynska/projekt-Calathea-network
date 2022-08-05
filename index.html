@@ -31,16 +31,18 @@
 
 <div class="tlacitka">
     <button class="zalevej" onclick="zalivej()">Zalévej 3 sekundy</button>
+    <button id="dolita-voda" onclick="dolilaJsemVodu()">Dolitá voda</button>
     <button class="zapniAutoZalevani" onclick="zapniAuto()">Zapnout automatické zalévání</button>
     <button class="vypniAutoZalevani" onclick="vypniAuto()">Vypnout automatické zalévání</button>
+   
 </div>
 
     <form class="formular">
         <label for="hodiny">Časový interval</label>
-        <textarea id="hodiny" cols="35" rows="3" placeholder="Zadejte, jak často bude probíhat automatické zalévání. (v milisekundách)"></textarea>
+        <textarea id="hodiny" cols="38" rows="3" placeholder="Zadejte, jak často bude probíhat automatické zalévání. (v milisekundách)"></textarea>
         
         <button id="odeslat">OK</button>
-        <button id="dolita-voda" onclick="dolilaJsemVodu()">Dolitá voda</button>
+        
     </form>
 
     <section class="kytka1" id="kytka1">
