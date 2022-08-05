@@ -7,7 +7,7 @@ let zapnoutAutomatickeZavlazovani = false;
 client = new Paho.MQTT.Client(
     "d57a0d1c39d54550b147b58411d86743.s2.eu.hivemq.cloud", 
     8884, 
-    "3d8cfbf1-3639-4883-bff");
+    "letni-skola" + Math.random());
 
 client.connect({
     onSuccess: onConnect,
@@ -39,7 +39,7 @@ function onConnect() {
 }
 
 function zalivej() {
-    zapnoutRele(15000, 15000)
+    zapnoutRele(3000, 15000)
     console.log("zalivej")
 }
 
@@ -190,7 +190,7 @@ function automatickeZavlazovani(vlhkost) {
     console.log(intervalOdUzivatele)
     console.log("automatickeZavlazovani")
     if (probihaZalevani == false && cerstveZalito == false && zapnoutAutomatickeZavlazovani == true) {
-        zapnoutRele(5000, intervalOdUzivatele);
+        zapnoutRele(2000, intervalOdUzivatele);
     }
         
 }
