@@ -30,13 +30,14 @@
 
 
 
-    <button class="button">Zalévej na 15 sekund</button>
-    <button class="button2">Automatické zalévání</button>
-    <button class="button3">Vypnout automatické zalévání</button>
+    <button class="zalevej" onclick="zalivej()">Zalévej na 15 sekund</button>
+    <button class="zapniAutoZalevani" onclick="zapniAuto()">Zapnout automatické zalévání</button>
+    <button class="vypniAutoZalevani" onclick="vypniAuto()">Vypnout automatické zalévání</button>
 
-    <form>
+    <form class="formular">
         <label for="hodiny">Časový interval</label>
         <textarea id="hodiny" cols="35" rows="3" placeholder="Zadejte, jak často bude probíhat automatické zalévání. (v sekundách)"></textarea>
+        <button id="odeslat">OK</button>
     </form>
 
     <section class="kytka1" id="kytka1">
