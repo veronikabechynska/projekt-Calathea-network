@@ -53,6 +53,13 @@ function zapniAuto(){
     console.log("zapniAuto")
 }
 
+function dolilaJsemVodu(){
+    vypnoutSvetla();
+    message = new Paho.MQTT.Message("on");     
+    message.destinationName = "/in/plant/watertank/reset";       
+    client.send(message);
+}
+
 /*let zalivej = document.querySelector(".zalevej");
 zalivej.addEventListener("click", zapnoutRele(15000));
 console.log("zalivej")
